@@ -32,4 +32,9 @@ bower_components
 Thumbs.db
 
 # Ignore built ts files
-dist/**/*
+#dist/**/*
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
