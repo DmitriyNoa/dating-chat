@@ -7,12 +7,16 @@ import * as errorHandler from "errorhandler";
 import * as lusca from "lusca";
 import * as dotenv from "dotenv";
 import * as flash from "express-flash";
+import { Server, createServer }  from "http";
+import * as socketIo from "socket.io";
 import * as path from "path";
 import * as handlebars from "express-handlebars";
 import expressValidator = require("express-validator");
 dotenv.config({ path: ".env.example" });
 import * as homeController from "./controllers/home";
 const app = express();
+const server = createServer(app);
+const io = socketIo(server);
 app.set("port", process.env.PORT || 3000);
 
 app.engine(".hbs", handlebars({defaultLayout: "home", extname: ".hbs"}));
@@ -32,6 +36,10 @@ app.use(session({
 app.use(lusca.xframe("SAMEORIGIN"));
 app.use(lusca.xssProtection(true));
 
+io.on("connection", function(socket: any){
+  console.log("a user connected");
+});
+
 app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }));
 
 app.get("/", homeController.index);
@@ -44,7 +52,7 @@ app.use(errorHandler());
 /**
  * Start Express server.
  */
-app.listen(app.get("port"), () => {
+server.listen(app.get("port"), () => {
   console.log(("  App is running at http://localhost:%d in %s mode"), app.get("port"), app.get("env"));
   console.log("  Press CTRL-C to stop\n");
 });
