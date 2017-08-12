@@ -5,6 +5,8 @@
         "noImplicitAny": true,
         "moduleResolution": "node",
         "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
         "outDir": "dist",
         "baseUrl": ".",
         "paths": {
@@ -16,5 +18,8 @@
     },
     "include": [
         "src/**/*"
+    ],
+    "exclude": [
+        "src/client"
     ]
 }
