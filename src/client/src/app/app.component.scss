@@ -1,0 +1,70 @@
+.dating-chat {
+  padding: 50px 0px;
+}
+.cat-icon {
+  display: inline-block;
+  border: solid 1px transparent;
+  cursor: pointer;
+  &:hover, &.active {
+    border: solid 1px #999;
+  }
+}
+.cat-icon-0 {
+  width: 200px;
+  height: 208px;
+  background: url('~/assets/images/cats.jpg');
+  background-position: 0 0;
+}
+.cat-icon-1 {
+  width: 200px;
+  height: 208px;
+  background: url('~/assets/images/cats.jpg');
+  background-position: 0px 208px;
+}
+.cat-icon-2 {
+  width: 200px;
+  height: 208px;
+  background: url('~/assets/images/cats.jpg');
+  background-position: 215px 208px;
+}
+.cat-icon-3 {
+  width: 200px;
+  height: 208px;
+  background: url('~/assets/images/cats.jpg');
+  background-position: 208px 0;
+}
+.cat-icon-4 {
+  width: 200px;
+  height: 208px;
+  background: url('~/assets/images/cats.jpg');
+  background-position: 416px 0;
+}
+.cat-icon-5 {
+  width: 208px;
+  height: 200px;
+  background: url('~/assets/images/cats.jpg');
+  background-position: 412px 416px;
+}
+.cats {
+  width: 630px;
+  margin: auto;
+}
+.short-control {
+  width: 40%;
+  margin: 0px auto;
+}
+.join {
+  text-align: center;
+  padding-top: 25px;
+  button {
+    margin: 0px auto;
+    cursor: pointer;
+  }
+}
+.right-user {
+  float: right;
+  text-align: right;
+}
+.chat-clear-fix {
+  clear: both;
+}
