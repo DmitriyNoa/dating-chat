@@ -6,8 +6,8 @@ import {FormsModule} from '@angular/forms';
 import {UsersListComponent} from '../users-list/users-list.component';
 import {MessagesComponent} from '../messages/messages.component';
 import {MessageFormComponent} from '../message-form/message-form.component';
-import User from "../../../../models/User.model";
-import {UtilityService} from "../../services/utility.service";
+import User from '../../../../models/User.model';
+import {UtilityService} from '../../services/utility.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
