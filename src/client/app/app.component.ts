@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ChatService} from "./services/chat.service";
-import User from "../../../models/User.model";
+import User from "../../models/User.model";
 
 @Component({
   selector: 'app-root',

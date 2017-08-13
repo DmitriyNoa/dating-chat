@@ -5,7 +5,7 @@
   },
   "apps": [
     {
-      "root": "src/client/src",
+      "root": "src/client",
       "outDir": "dist/public",
       "assets": [
         "assets",
@@ -20,7 +20,7 @@
       "prefix": "app",
       "styles": [
         "styles.scss",
-        "../../../node_modules/bootstrap/dist/css/bootstrap.css"
+        "../../node_modules/bootstrap/dist/css/bootstrap.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
@@ -37,13 +37,13 @@
   },
   "lint": [
     {
-      "project": "src/client/src/tsconfig.app.json"
+      "project": "src/client/tsconfig.app.json"
     },
     {
-      "project": "src/client/src/tsconfig.spec.json"
+      "project": "src/client/tsconfig.spec.json"
     },
     {
-      "project": "src/client/src/e2e/tsconfig.e2e.json"
+      "project": "e2e/tsconfig.e2e.json"
     }
   ],
   "test": {

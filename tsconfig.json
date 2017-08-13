@@ -20,6 +20,7 @@
         "src/**/*"
     ],
     "exclude": [
-        "src/client"
+        "src/client",
+        "e2e"
     ]
 }

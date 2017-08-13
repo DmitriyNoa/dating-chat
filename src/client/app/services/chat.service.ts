@@ -1,6 +1,6 @@
 import { Injectable,EventEmitter } from '@angular/core';
 import * as socketClient from 'socket.io-client';
-import {APP_CONSTANTS} from '../../../../constants/general';
+import {APP_CONSTANTS} from '../../../constants/general';
 import {environment} from '../../environments/environment';
 
 @Injectable()
