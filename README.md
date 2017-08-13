@@ -18,3 +18,23 @@ Run chat front-end application in new terminal window
 ```sh
 $ npm run start-client
 ```
+Open http://localhost:4200 in your browser.
+
+### Running on production
+```sh
+$ npm run build
+$ npm run start-production
+```
+### Tests
+Run socket service tests
+```sh
+$ npm test
+```
+Run front-end chat application unit tests
+```sh
+$ npm run client-test
+```
+Run end to end tests
+```sh
+$ npm run e2e
+```
