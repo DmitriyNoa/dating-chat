@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ChatService} from "./services/chat.service";
+import User from "../../../models/User.model";
 
 @Component({
   selector: 'app-root',
@@ -21,27 +22,35 @@ export class AppComponent implements OnInit {
 
   public messages: Array<any> = [];
 
+  public activeUsers: Array<any> = [];
+
+  public currentUser: any = "";
+
   private isUserConectedToChat = false;
 
-  public user: any = {
-    name: 'Grumpy cat',
-    avatar: this.catsIcons[0].id
-  };
+  public user: any = new User("", "", this.catsIcons[0].id);
 
 
-  constructor(public chatService: ChatService) {
-
-  }
+  constructor(public chatService: ChatService) {}
 
   ngOnInit() {
     this.chatService.onUserConnected.subscribe((message) => {
       this.isUserConectedToChat = true;
-      this.user.id = this.user.id || message.user;
+      if(!this.user.id) {
+        this.user = message.user;
+        this.messages = message.messages;
+        this.currentUser = this.user.name;
+      }
     });
 
     this.chatService.onMessageReceived.subscribe((message) => {
       this.messages.push(message)
       this.message = "";
+    })
+
+    this.chatService.onNewUser.subscribe((message) => {
+      console.dir(message);
+      this.activeUsers = message.activeUsers;
     })
 
   }
@@ -61,11 +70,16 @@ export class AppComponent implements OnInit {
     this.chatService.connect(this.user);
   }
 
-  public sendMessage() {
+
+  sendMessage() {
     this.chatService.sendMessage({message: this.message, user: this.user});
   }
 
-  public isUserConnected() {
+  isUserConnected() {
     return this.isUserConectedToChat;
+  }
+
+  getUserAvatar(avatar) {
+    return `small cat-icon cat-icon-${avatar}`;
   }
 }

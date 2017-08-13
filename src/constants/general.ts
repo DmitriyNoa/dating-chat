@@ -5,5 +5,6 @@ export const APP_CONSTANTS = {
   DISCONNECT: "disconnect",
   WELCOME: "welcome",
   SAMEORIGIN: "SAMEORIGIN",
-  USER_NAME: "chatUserId"
+  USER_NAME: "chatUserId",
+  NEW_USER: "newuser"
 };

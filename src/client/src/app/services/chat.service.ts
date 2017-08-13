@@ -1,14 +1,16 @@
 import { Injectable,EventEmitter } from '@angular/core';
 import * as socketClient from 'socket.io-client';
 import {APP_CONSTANTS} from '../../../../constants/general';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class ChatService {
-  private socketUrl: any = 'http://localhost:3000';
+  private socketUrl: any = environment.production ? '/' : 'http://localhost:3000';
   public socket: any;
 
   public onUserConnected: EventEmitter<any> = new EventEmitter();
   public onMessageReceived: EventEmitter<any> = new EventEmitter();
+  public onNewUser: EventEmitter<any> = new EventEmitter();
 
   constructor() {
   }
@@ -22,13 +24,17 @@ export class ChatService {
   }
 
   public connect(user: any) {
-    this.socket = socketClient(this.socketUrl);
+    let userString = JSON.stringify(user);
+    this.socket = socketClient(this.socketUrl, {query: 'user=' + userString });
     this.socket.on(APP_CONSTANTS.MESSAGE, (message) => {
       this.onMessageReceived.emit(message)
     });
     this.socket.on(APP_CONSTANTS.WELCOME, (message) => {
       this.saveUserToLocalStorage(message.user);
       this.onUserConnected.emit(message);
+    });
+    this.socket.on(APP_CONSTANTS.NEW_USER, (message) => {
+      this.onNewUser.emit(message);
     });
   }
 
