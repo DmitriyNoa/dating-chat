@@ -1,0 +1,15 @@
+<div class="messages">
+  <div *ngFor="let message of messages" class="message-item" [ngClass]="{'right-user': user.id === message.user.id}">
+    <div class="chat-item">
+      <div class="user-name">
+        {{message.user.name}}
+      </div>
+      <div [class]="'cat-icon cat-icon-' + message.user.avatar + ' small'"></div>
+      <div>
+        {{message.message}}
+      </div>
+    </div>
+
+    <div class="chat-clear-fix"></div>
+  </div>
+</div>

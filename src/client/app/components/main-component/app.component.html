@@ -20,35 +20,14 @@
       <div  *ngIf="isUserConnected()">
         <div class="row">
           <div class="col-md-8">
-            <div class="messages">
-              <div *ngFor="let message of messages" class="message-item" [ngClass]="{'right-user': user.id === message.user.id}">
-                <div class="chat-item">
-                  <div class="user-name">
-                    {{message.user.name}}
-                  </div>
-                  <div [class]="'cat-icon cat-icon-' + message.user.avatar + ' small'"></div>
-                  <div>
-                    {{message.message}}
-                  </div>
-                </div>
-
-                <div class="chat-clear-fix"></div>
-              </div>
-            </div>
+            <app-messages [messages]="messages" [user]="user"></app-messages>
             <form (submit)="sendMessage()">
               <textarea autofocus id="messageArea" class="form-control message-input" (keypress)="processPress($event)" name="userMessage" [(ngModel)]="message"></textarea>
               <input type="submit" value="send" class="btn btn-primary">
             </form>
           </div>
           <div class="col-md-4">
-            <ul class="list-group">
-              <li class="list-group-item" *ngFor="let activeUser of activeUsers">
-                <div class="row">
-                  <div class="col-md-6"><div [class]="getUserAvatar(activeUser.avatar)"></div></div>
-                  <div class="col-md-6">{{activeUser.name}}</div>
-                </div>
-              </li>
-            </ul>
+            <app-users-list [users]="activeUsers"></app-users-list>
           </div>
         </div>
       </div>

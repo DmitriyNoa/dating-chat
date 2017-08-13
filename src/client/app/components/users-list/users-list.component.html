@@ -1,0 +1,8 @@
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let activeUser of users">
+    <div class="row">
+      <div class="col-md-6"><div [class]="utility.getUserAvatar(activeUser.avatar)"></div></div>
+      <div class="col-md-6">{{activeUser.name}}</div>
+    </div>
+  </li>
+</ul>

@@ -1,0 +1,71 @@
+.cat-icon {
+  display: inline-block;
+  border: solid 1px transparent;
+  cursor: pointer;
+  background: url('~/assets/images/cats.jpg');
+  &:hover, &.active {
+    border: solid 1px #999;
+  }
+  &.small {
+    background-size: 313px 313px;
+  }
+}
+.cat-icon-0 {
+  width: 200px;
+  height: 208px;
+  background-position: 0 0;
+  &.small {
+    width: 104px;
+    height: 104px;
+  }
+}
+.cat-icon-1 {
+  width: 200px;
+  height: 208px;
+  background-position: 0px 208px;
+  &.small {
+    width: 100px;
+    height: 104px;
+    background-position: 0px 104px;
+  }
+}
+.cat-icon-2 {
+  width: 200px;
+  height: 208px;
+  background-position: 215px 208px;
+  &.small {
+    width: 100px;
+    height: 104px;
+    background-position: 107px 104px;
+  }
+}
+.cat-icon-3 {
+  width: 200px;
+  height: 208px;
+  background-position: 208px 0;
+  &.small {
+    width: 100px;
+    height: 104px;
+    background-position: 104px 0px;
+  }
+}
+.cat-icon-4 {
+  width: 200px;
+  height: 208px;
+  background-position: 416px 0;
+  &.small {
+    width: 100px;
+    height: 104px;
+    background-position: 208px 0px;
+  }
+}
+.cat-icon-5 {
+  width: 208px;
+  height: 200px;
+  background-position: 412px 416px;
+  &.small {
+    width: 100px;
+    height: 104px;
+    background-position: 206px 208px;
+  }
+}
