@@ -59,27 +59,17 @@ export class AppComponent implements OnInit {
     this.user.avatar = avatar.id;
   }
 
-  processPress(event) {
-    if(event.code==="Enter") {
-      event.preventDefault();
-      this.sendMessage();
-    };
-  }
-
   connect() {
     this.chatService.connect(this.user);
   }
 
 
-  sendMessage() {
-    this.chatService.sendMessage({message: this.message, user: this.user});
+  sendMessage(message: any) {
+    this.chatService.sendMessage({message: message, user: this.user});
   }
 
   isUserConnected() {
     return this.isUserConectedToChat;
   }
 
-  getUserAvatar(avatar) {
-    return `small cat-icon cat-icon-${avatar}`;
-  }
 }

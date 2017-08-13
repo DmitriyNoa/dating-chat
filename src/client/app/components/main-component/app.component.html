@@ -21,10 +21,7 @@
         <div class="row">
           <div class="col-md-8">
             <app-messages [messages]="messages" [user]="user"></app-messages>
-            <form (submit)="sendMessage()">
-              <textarea autofocus id="messageArea" class="form-control message-input" (keypress)="processPress($event)" name="userMessage" [(ngModel)]="message"></textarea>
-              <input type="submit" value="send" class="btn btn-primary">
-            </form>
+            <app-message-form (onMessageEnter)="sendMessage($event)"></app-message-form>
           </div>
           <div class="col-md-4">
             <app-users-list [users]="activeUsers"></app-users-list>

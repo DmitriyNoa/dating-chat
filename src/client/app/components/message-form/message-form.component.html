@@ -1,3 +1,4 @@
-<p>
-  message-form works!
-</p>
+<form (submit)="enterMessage($event)">
+  <textarea autofocus id="messageArea" class="form-control message-input" (keypress)="processPress($event)" name="userMessage" [(ngModel)]="message"></textarea>
+  <input type="submit" value="send" class="btn btn-primary">
+</form>

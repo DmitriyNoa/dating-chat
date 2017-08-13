@@ -5,6 +5,7 @@ import {ChatService} from '../../services/chat.service'
 import {FormsModule} from '@angular/forms';
 import {UsersListComponent} from '../users-list/users-list.component';
 import {MessagesComponent} from '../messages/messages.component';
+import {MessageFormComponent} from '../message-form/message-form.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -12,7 +13,8 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         UsersListComponent,
-        MessagesComponent
+        MessagesComponent,
+        MessageFormComponent
       ],
       imports: [FormsModule],
       providers: [ChatService]
