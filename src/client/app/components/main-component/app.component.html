@@ -2,7 +2,7 @@
   <div class="container">
     <h1 class="text-center">Welcome to dating chat <span class="activeUser">{{currentUser}}</span></h1>
     <div class="user-form text-center">
-      <form class="form-horizontal" *ngIf="!isUserConnected()">
+      <form class="form-horizontal user-register-form" *ngIf="!isUserConnected()">
         <fieldset>
           <legend>Register user to join the chat</legend>
           <div class="form-group">

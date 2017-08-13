@@ -15,12 +15,8 @@ export class ChatService {
   constructor() {
   }
 
-  public getMessages(): any {
-
-  }
-
   public saveUserToLocalStorage(user) {
-    localStorage.setItem(APP_CONSTANTS.USER_NAME, user);
+    localStorage.setItem(APP_CONSTANTS.USER_NAME, JSON.stringify(user));
   }
 
   public connect(user: any) {

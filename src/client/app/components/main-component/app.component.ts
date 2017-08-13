@@ -49,7 +49,6 @@ export class AppComponent implements OnInit {
     })
 
     this.chatService.onNewUser.subscribe((message) => {
-      console.dir(message);
       this.activeUsers = message.activeUsers;
     })
 
