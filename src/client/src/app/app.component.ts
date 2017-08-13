@@ -35,19 +35,26 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.chatService.onUserConnected.subscribe((message) => {
-      console.log(message);
       this.isUserConectedToChat = true;
       this.user.id = this.user.id || message.user;
     });
 
     this.chatService.onMessageReceived.subscribe((message) => {
-      console.log(message);
       this.messages.push(message)
+      this.message = "";
     })
+
   }
 
   selectAvatar(avatar) {
     this.user.avatar = avatar.id;
+  }
+
+  processPress(event) {
+    if(event.code==="Enter") {
+      event.preventDefault();
+      this.sendMessage();
+    };
   }
 
   connect() {

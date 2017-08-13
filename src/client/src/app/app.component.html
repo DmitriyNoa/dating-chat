@@ -18,19 +18,22 @@
         </fieldset>
       </form>
       <div class="messages">
-        <div *ngFor="let message of messages">
-          <div class="row">
-            <div class="chat-item" [ngClass]="{'right-user': user.id === message.user.id}">
-
-              <div [class]="'cat-icon-' + message.user.avatar"></div>
-              {{message.message}}
+        <div *ngFor="let message of messages" class="message-item" [ngClass]="{'right-user': user.id === message.user.id}">
+            <div class="chat-item">
+              <div class="user-name">
+                {{message.user.name}}
+              </div>
+              <div [class]="'cat-icon cat-icon-' + message.user.avatar + ' small'"></div>
+              <div>
+                {{message.message}}
+              </div>
             </div>
-          </div>
+
           <div class="chat-clear-fix"></div>
         </div>
       </div>
       <form (submit)="sendMessage()" *ngIf="isUserConnected()">
-        <textarea class="form-control" name="userMessage" [(ngModel)]="message"></textarea>
+        <textarea autofocus id="messageArea" class="form-control message-input" (keypress)="processPress($event)" name="userMessage" [(ngModel)]="message"></textarea>
         <input type="submit" value="send" class="btn btn-primary">
       </form>
     </div>
