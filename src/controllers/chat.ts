@@ -19,7 +19,7 @@ export default function chat(io: any) {
       io.emit(APP_CONSTANTS.MESSAGE, message);
     });
 
-    socket.on(APP_CONSTANTS.DISCONNECT, function () {
+    socket.on(APP_CONSTANTS.DISCONNECT, () => {
       const userIndex = activeUsers.indexOf(user);
       activeUsers.splice(userIndex, 1);
     });
