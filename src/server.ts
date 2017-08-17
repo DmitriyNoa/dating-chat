@@ -6,12 +6,12 @@ import * as errorHandler from "errorhandler";
 import * as lusca from "lusca";
 import {createServer}  from "http";
 import * as socketIo from "socket.io";
-import * as path from "path";
 import * as handlebars from "express-handlebars";
 import expressValidator = require("express-validator");
 import * as homeController from "./controllers/home";
 import {APP_CONSTANTS} from "./constants/general";
 import chat from "./controllers/chat";
+import db from "./controllers/database";
 const app = express();
 const server = createServer(app);
 const io = socketIo(server);
@@ -31,8 +31,8 @@ app.use(errorHandler());
 // app.use(express.static(path.join(__dirname, "public"), {maxAge: 31557600000}));
 
 app.get("/", homeController.index);
-
-chat(io);
+const database = db();
+chat(io, database);
 
 server.listen(app.get("port"), () => {
   console.log(("  App is running at http://localhost:%d in %s mode"), app.get("port"), app.get("env"));

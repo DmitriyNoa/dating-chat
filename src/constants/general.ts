@@ -6,5 +6,8 @@ export const APP_CONSTANTS = {
   WELCOME: "welcome",
   SAMEORIGIN: "SAMEORIGIN",
   USER_NAME: "chatUserId",
-  NEW_USER: "newuser"
+  NEW_USER: "newuser",
+  MODELS: {
+    USER: "User"
+  }
 };
