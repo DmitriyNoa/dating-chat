@@ -13,30 +13,45 @@ import {APP_CONSTANTS} from "./constants/general";
 import chat from "./controllers/chat";
 import db from "./controllers/database";
 const app = express();
-const server = createServer(app);
-const io = socketIo(server);
-app.set("port", process.env.PORT || 3000);
 
-app.engine(".hbs", handlebars({defaultLayout: "home", extname: ".hbs"}));
-app.set("view engine", ".hbs");
+class Server {
 
-app.use(compression());
-app.use(logger("dev"));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(expressValidator());
-app.use(lusca.xframe(APP_CONSTANTS.SAMEORIGIN));
-app.use(lusca.xssProtection(true));
-app.use(errorHandler());
-// app.use(express.static(path.join(__dirname, "public"), {maxAge: 31557600000}));
+  public app: express.Application;
 
-app.get("/", homeController.index);
-const database = db();
-chat(io, database);
+  public static bootstrap(): Server {
+    return new Server();
+  }
 
-server.listen(app.get("port"), () => {
-  console.log(("  App is running at http://localhost:%d in %s mode"), app.get("port"), app.get("env"));
-  console.log("  Press CTRL-C to stop\n");
-});
+  constructor() {
+    this.app = express();
+    this.config();
+  }
 
-module.exports = app;
+  public config() {
+    this.app.set("port", process.env.PORT || 3000);
+
+    this.app.engine(".hbs", handlebars({defaultLayout: "home", extname: ".hbs"}));
+    this.app.set("view engine", ".hbs");
+
+    this.app.use(compression());
+    this.app.use(logger("dev"));
+    this.app.use(bodyParser.json());
+    this.app.use(bodyParser.urlencoded({extended: true}));
+    this.app.use(expressValidator());
+    this.app.use(lusca.xframe(APP_CONSTANTS.SAMEORIGIN));
+    this.app.use(lusca.xssProtection(true));
+    this.app.use(errorHandler());
+    this.app.get("/", homeController.index);
+    const database = db();
+
+    const server = createServer(app);
+    const io = socketIo(server);
+    chat(io, database);
+    server.listen(this.app.get("port"), () => {
+      console.log(("  App is running at http://localhost:%d in %s mode"), app.get("port"), app.get("env"));
+      console.log("  Press CTRL-C to stop\n");
+    });
+  }
+}
+
+module.exports = Server.bootstrap();
