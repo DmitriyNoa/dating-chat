@@ -8,10 +8,10 @@ import {createServer}  from "http";
 import * as socketIo from "socket.io";
 import * as handlebars from "express-handlebars";
 import expressValidator = require("express-validator");
-import * as homeController from "./controllers/home";
 import {APP_CONSTANTS} from "./constants/general";
 import chat from "./controllers/chat";
 import db from "./controllers/database";
+import * as indexRoute from "./routes/index";
 const app = express();
 
 class Server {
@@ -25,6 +25,7 @@ class Server {
   constructor() {
     this.app = express();
     this.config();
+    this.routes();
   }
 
   public config() {
@@ -41,7 +42,6 @@ class Server {
     this.app.use(lusca.xframe(APP_CONSTANTS.SAMEORIGIN));
     this.app.use(lusca.xssProtection(true));
     this.app.use(errorHandler());
-    this.app.get("/", homeController.index);
     const database = db();
 
     const server = createServer(app);
@@ -51,6 +51,14 @@ class Server {
       console.log(("  App is running at http://localhost:%d in %s mode"), app.get("port"), app.get("env"));
       console.log("  Press CTRL-C to stop\n");
     });
+  }
+
+  private routes() {
+    let router: express.Router;
+    router = express.Router();
+    const index: indexRoute.Index = new indexRoute.Index();
+    router.get("/", index.index.bind(index.index));
+    this.app.use(router);
   }
 }
 
