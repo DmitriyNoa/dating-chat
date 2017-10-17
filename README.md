@@ -11,7 +11,9 @@ $ npm install
 ```
 ### Running locally
 Start MongoDB
+```sh
 $ mongod
+```
 
 Run socket service
 ```sh
