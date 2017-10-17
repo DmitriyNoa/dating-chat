@@ -10,6 +10,9 @@ $ cd dating-chat
 $ npm install
 ```
 ### Running locally
+Start MongoDB
+mongod
+
 Run socket service
 ```sh
 $ npm start
